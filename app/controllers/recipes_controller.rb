@@ -2,6 +2,9 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find(params[:id])
     end
+    def index
+        @recipes = Recipe.all
+    end
     def new
         @recipe_form = RecipeForm.new
     end
@@ -22,6 +25,11 @@ class RecipesController < ApplicationController
         else
           render :new
         end
+    end
+    def destroy
+      recipe = Recipe.find(params[:id])
+      recipe.destroy
+      redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
     end
     def recipe_form_params
         params.require(:recipe).permit(:title, :description, :image, :ingredients_text, :steps_text, :storage_method, :price, :cooking_time )

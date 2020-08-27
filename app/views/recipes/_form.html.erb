@@ -10,58 +10,60 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label "タイトル" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label "説明" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label "保存方法" %>
-    <%= form.text_field :storage_method %>
-  </div>
-
-  <div class="field">
-    <%= form.label "値段" %>
-    <%= form.text_field :price %>
-  </div>
-  
-  <div class="field">
-    <%= form.label "調理時間の目安" %>
-    <%= form.text_field :cooking_time %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label "材料" %>
-    <%= form.text_area :ingredients_text %>
-    <div class="small gray">
-      入力方法: 1行に材料名、分量をスペース区切りで入力します。入力例:
-      <pre>
-      卵 3つ
-      砂糖 1大さじ
-      </pre>
+  <div class="container">
+    <div class="form-group">
+      <%= form.label "レシピの名前" %>
+      <%= form.text_field :title %>
+      <small>もやしのナムル</small>
     </div>
-  </div>
 
-  <div class="field">
-    <%= form.label "手順" %>
-    <%= form.text_area :steps_text %>
-    <div class="small gray">
-      入力方法: 1行に1手順を書いてください。入力例:
-      <pre>
-      卵白/卵黄を分けます
-      卵白に砂糖を少しづつ入れながら八分立てのメレンゲを作ります
-      </pre>
+    <div class="field">
+      <%= form.label "説明" %>
+      <%= form.text_field :description %>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= form.submit "Create" %>
+    <div class="field">
+      <%= form.label "保存方法" %>
+      <%= form.text_field :storage_method %>
+    </div>
+
+    <div class="field">
+      <%= form.label "値段" %>
+      <%= form.number_field :price %>
+    </div>
+    
+    <div class="field">
+      <%= form.label "調理時間の目安" %>
+      <%= form.number_field :cooking_time %>
+    </div>
+
+
+    <div class="field">
+      <%= form.label "材料" %>
+      <%= form.text_area :ingredients_text %>
+      <div class="small gray">
+        入力方法: 1行に材料名、分量をスペース区切りで入力します。入力例:
+        <pre>
+        卵 3つ
+        砂糖 1大さじ
+        </pre>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label "手順" %>
+      <%= form.text_area :steps_text %>
+      <div class="small gray">
+        入力方法: 1行に1手順を書いてください。入力例:
+        <pre>
+        卵白/卵黄を分けます
+        卵白に砂糖を少しづつ入れながら八分立てのメレンゲを作ります
+        </pre>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Create" %>
+    </div>
   </div>
 <% end %>

@@ -1,0 +1,12 @@
+
+<h3>レシピ一覧</h3>
+<table>
+    <% @recipes.each do |recipe| %>
+        <tr>
+            <td>レシピ名: <%= link_to recipe.title, recipe %></td>
+            <td>説明:<%= recipe.description %></td>
+            <td>保存方法:<%= recipe.storage_method %></td>
+            <td>費用:<%= recipe.price %></td>
+        </tr>
+    <% end %>
+</table>
