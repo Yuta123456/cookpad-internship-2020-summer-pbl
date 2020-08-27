@@ -1,14 +1,18 @@
 class RecipeForm
     include ActiveModel::Validations
   
-    attr_accessor :title, :description, :steps_text, :ingredients_text, :image
+    attr_accessor :title, :description, :image, :ingredients_text, :steps_text, :storage_method, :price, :cooking_time
   
     validates :title, presence: true, length: { maximum: 255 }
     validates :description, presence: true, length: { maximum: 512 }
     validate :validate_steps
     validate :validate_ingredients
     validate :validate_image
-  
+
+    validate :validate_price
+    validate :validate_storageMethod
+    validate :validate_cookingTime
+
     def initialize(model = nil)
       if model
         @title = model.title
@@ -16,6 +20,9 @@ class RecipeForm
         @steps_text = StepsParser.encode(model.steps)
         @ingredients_text = IngredientsParser.encode(model.ingredients)
         @image_id = model.image_id
+        @storage_method = model.storage_method
+        @cooking_time = model.cooking_time
+        @price = model.price
         @persisted = model.persisted?
       else
         @persisted = false
@@ -33,6 +40,9 @@ class RecipeForm
       end
       @steps_text = params[:steps_text]
       @ingredients_text = params[:ingredients_text]
+      @price = params[:price].to_i
+      @cooking_time = params[:cooking_time].to_i
+      @storage_method = params[:storage_method]
     end
   
     def persisted?
@@ -45,6 +55,10 @@ class RecipeForm
         description: @description,
         steps_attributes: @steps.map(&:attributes),
         ingredients_attributes: @ingredients.map(&:attributes),
+        cooking_time: @cooking_time,
+        storage_method: @storage_method,
+        price: @price,
+
       }
     end
   
@@ -84,5 +98,17 @@ class RecipeForm
       end
     rescue IngredientsParser::ParseError => e
       errors.add(:ingredients_text, e.message)
+    end
+    private def validate_cookingTime
+      if @cooking_time < 0
+        errors.add(:cooking_time, "cooking_time should be larger than zero")
+      end
+    end
+    private def validate_price
+      if @price < 0
+        errors.add(:price, "price should be larger than zero")
+      end
+    end
+    private def validate_storageMethod
     end
 end

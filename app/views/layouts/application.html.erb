@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <%= link_to 'トップ', new_recipe_path %>
+    <%= link_to 'トップ', root_path %> |
+      <%= link_to 'レシピを作成する', new_recipe_path %>
     <%= yield %>
   </body>
 </html>

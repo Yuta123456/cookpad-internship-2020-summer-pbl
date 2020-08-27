@@ -17,5 +17,11 @@ recipes = []
         cooking_time: rand(10..30),
         description: "#{recipe_title}の作り方",
         storage_method: "冷蔵庫",
+        steps_attributes: rand(1..4).times.map do |i|
+            { description: "手順 #{i + 1}", position: i }
+          end,
+        ingredients_attributes: rand(1..4).times.map do |i|
+            { name: "材料 #{i + 1}", quantity: "#{i * 10}g", position: i }
+        end
     )
 end

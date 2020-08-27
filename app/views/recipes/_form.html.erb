@@ -22,9 +22,20 @@
   </div>
 
   <div class="field">
-    <%= form.label "画像" %>
-    <%= form.file_field :image, accept: "image/png,image/gif,image/jpeg" %>
+    <%= form.label "保存方法" %>
+    <%= form.text_field :storage_method %>
   </div>
+
+  <div class="field">
+    <%= form.label "値段" %>
+    <%= form.text_field :price %>
+  </div>
+  
+  <div class="field">
+    <%= form.label "調理時間の目安" %>
+    <%= form.text_field :cooking_time %>
+  </div>
+
 
   <div class="field">
     <%= form.label "材料" %>

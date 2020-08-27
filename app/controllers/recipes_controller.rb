@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
         @recipe_form.apply(recipe_form_params)
     
         if @recipe_form.valid?
-          recipe = Recipe.new(@recipe_form.to_attributes.merge(user_id: current_user.id))
+          recipe = Recipe.new(@recipe_form.to_attributes.merge())
           Recipe.transaction do
             if @recipe_form.image_uploaded?
               image = Image.create!(@recipe_form.to_image_attributes)
@@ -24,6 +24,6 @@ class RecipesController < ApplicationController
         end
     end
     def recipe_form_params
-        params.require(:recipe).permit(:title, :description, :image, :ingredients_text, :steps_text)
+        params.require(:recipe).permit(:title, :description, :image, :ingredients_text, :steps_text, :storage_method, :price, :cooking_time )
     end
 end
