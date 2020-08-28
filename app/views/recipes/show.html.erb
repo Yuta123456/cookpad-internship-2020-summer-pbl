@@ -1,20 +1,4 @@
 <div class="container">
-  <h1><%= @recipe.title %></h1>
-  <h1>説明</h1>
-  <p>
-      <%= @recipe.description %>
-  </p>
-  <div>料理時間 : <%= @recipe.cooking_time %></div>
-  <div>保存方法 : <%= @recipe.storage_method %></div>
-  <div>費用 : <%= @recipe.price %></div>
-  <p>
-    <strong>材料:</strong>
-    <br />
-    <% @recipe.ingredients.each do |ingredient| %>
-      <%= ingredient.name + ' ' + ingredient.quantity %>
-      <br />
-    <% end %>
-  </p>
   <p>
     <strong>手順:</strong>
     <br />
@@ -24,4 +8,47 @@
     <% end %>
   </p>
 </div>
-<%= link_to '削除する', recipes_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="card">
+  <div class="card-header bg-info text-white text-center">
+      <%= @recipe.title %>
+  </div>
+  <span>
+    <div class="card">
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h4>説明</h4>
+      </div>
+      <p class="card-text"><%= @recipe.description %></p>
+    </div>
+  </span>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header text-left">
+            材料
+        </div>
+        <ul class="list-group">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <li class="list-group-item"><%= ingredient.name + ' ' + ingredient.quantity %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header text-center">
+            情報
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">保存方法 : <%= @recipe.storage_method %></li>
+          <li class="list-group-item">調理時間 : <%= @recipe.cooking_time %>分</li>
+          <li class="list-group-item">費用　　 : <%= @recipe.price %>円</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+<%= link_to '削除する', recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,12 +1,20 @@
-
-<h3>レシピ一覧</h3>
-<table>
-    <% @recipes.each do |recipe| %>
-        <tr>
-            <td>レシピ名: <%= link_to recipe.title, recipe %></td>
-            <td>説明:<%= recipe.description %></td>
-            <td>保存方法:<%= recipe.storage_method %></td>
-            <td>費用:<%= recipe.price %></td>
-        </tr>
-    <% end %>
-</table>
+<div class="jumbotron">
+  <h3 class="display-5">レシピ一覧</h3>
+  <hr class = "my-4">
+  <p class="lead">このページでは、全てのレシピを見ることが可能です。
+  </p>
+</div>
+<% @recipes.each do |recipe| %>
+    <div class="container">
+            <div class="card text-center ">
+                    <div class="card-header bg-info text-white">
+                        <%= recipe.title %>
+                    </div>
+                    <div class="card-body">
+                    <p class="card-text">料金(一食分): <%= recipe.price %>円</p>
+                    <p class="card-text">調理時間: <%= recipe.cooking_time %>分</p>
+                    <%= link_to "レシピを見る", recipe, class:"btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+<% end %>
