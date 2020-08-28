@@ -1,0 +1,7 @@
+<div class="jumbotron">
+    <h3 class="display-5">レシピ編集</h3>
+    <hr class = "my-4">
+    <p class="lead">このページでは、作ったレシピを編集できます。
+    </p>
+</div>
+<%= render 'form', recipe_form: @recipe_form, form_url: recipe_path(@recipe), message: "レシピを編集" %>

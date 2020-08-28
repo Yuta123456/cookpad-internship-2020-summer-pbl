@@ -11,59 +11,87 @@
     </div>
   <% end %>
   <div class="container">
-    <div class="form-group">
-      <%= form.label "レシピの名前" %>
-      <%= form.text_field :title %>
-      <small>もやしのナムル</small>
+    <div class="card w-75 center container">
+      <div class="card-header bg-info text-white text-center">
+          <div class="form-group">
+            <h3><%= form.label "レシピの名前" %></h3>
+            <%= form.text_field :title, class:"form-control", placeholder:"例 : 日持ちする絶品カレー"%>
+          </div>
+      </div>
+      <span>
+        <div class="card">
+          <div class="card-header">
+            <h4>説明</h4>
+          </div>
+          <div class="field card-body">
+            <%= form.label "料理の簡単な説明を記述してください" %>
+            <br/>
+            <%= form.text_field :description, class:"form-control" ,placeholder:"例 : 置いておけばおいておくほどカレーのコクがでておいしい！作り置きに最適！"%>
+          </div>
+        </div>
+      </span>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header text-left">
+              <h4>材料</h4>
+            </div>
+            <div class="field card-body">
+              <%= form.label "材料" %>
+               <%= form.text_area :ingredients_text,class:"form-control" %>
+              <div class="small gray">
+                入力方法: 1行に材料名、分量をスペース区切りで入力します。入力例:
+                <pre>
+                  卵 3つ
+                  砂糖 1大さじ
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header text-left">
+              <h4>その他情報</h4>
+            </div>
+          <div class="card-body">
+            <div class="field">
+              <%= form.label "保存方法" %>
+              <%= form.text_field :storage_method, placeholder:"熱消毒したタッパーに入れ、冷凍庫で保存", class:"form-control"%>
+            </div>
+            <div class="field">
+              <%= form.label "値段(円)" %>
+              <%= form.text_field :price, placeholder:"100", class:"form-control"%>
+            </div>
+            <div class="field">
+              <%= form.label "調理時間の目安(分)" %>
+              <%= form.text_field :cooking_time, placeholder:"10", class:"form-control"%>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="field">
-      <%= form.label "説明" %>
-      <%= form.text_field :description %>
-    </div>
-
-    <div class="field">
-      <%= form.label "保存方法" %>
-      <%= form.text_field :storage_method %>
-    </div>
-
-    <div class="field">
-      <%= form.label "値段" %>
-      <%= form.number_field :price %>
+    <div class="card">
+      <div class="card-header text-left">
+        <h4>作り方</h4>
+      </div>
+      <div class="field card-body">
+        <%= form.label "手順" %>
+        <%= form.text_area :steps_text,class:"form-control" %>
+        <div class="small gray">
+          入力方法: 1行に1手順を書いてください。入力例:
+          <pre>
+          卵白/卵黄を分けます
+          卵白に砂糖を少しづつ入れながら八分立てのメレンゲを作ります
+          </pre>
+        </div>
+      </div>
+      <div class="actions">
+        <%= form.submit message, class:"btn btn-success"%>
+      </div>
     </div>
     
-    <div class="field">
-      <%= form.label "調理時間の目安" %>
-      <%= form.number_field :cooking_time %>
-    </div>
-
-
-    <div class="field">
-      <%= form.label "材料" %>
-      <%= form.text_area :ingredients_text %>
-      <div class="small gray">
-        入力方法: 1行に材料名、分量をスペース区切りで入力します。入力例:
-        <pre>
-        卵 3つ
-        砂糖 1大さじ
-        </pre>
-      </div>
-    </div>
-
-    <div class="field">
-      <%= form.label "手順" %>
-      <%= form.text_area :steps_text %>
-      <div class="small gray">
-        入力方法: 1行に1手順を書いてください。入力例:
-        <pre>
-        卵白/卵黄を分けます
-        卵白に砂糖を少しづつ入れながら八分立てのメレンゲを作ります
-        </pre>
-      </div>
-    </div>
-
-    <div class="actions">
-      <%= form.submit "Create" %>
-    </div>
   </div>
+</div>
 <% end %>
+

@@ -19,11 +19,11 @@ class RecipeForm
         @description = model.description
         @steps_text = StepsParser.encode(model.steps)
         @ingredients_text = IngredientsParser.encode(model.ingredients)
-        @image_id = model.image_id
         @storage_method = model.storage_method
         @cooking_time = model.cooking_time
         @price = model.price
         @persisted = model.persisted?
+
       else
         @persisted = false
       end

@@ -1,54 +1,63 @@
+<div class="jumbotron">
+    <h3 class="display-5">レシピ詳細</h3>
+    <hr class = "my-4">
+    <p class="lead">このページでは、レシピの詳細を閲覧できます。
+    </p>
+</div>
 <div class="container">
-  <p>
-    <strong>手順:</strong>
-    <br />
-    <% @recipe.steps.each.with_index(1) do |step, idx| %>
-      <%= "#{idx}. #{step.description}" %>
-      <br />
-    <% end %>
-  </p>
+  <div class="card w-75 center container">
+    <div class="card-header bg-info text-white text-center">
+        <%= @recipe.title %>
+    </div>
+    <span>
+      <div class="card">
+        <div class="card-header">
+          <h4>説明</h4>
+        </div>
+        <p class="card-body"><%= @recipe.description %></p>
+        <br/>
+      </div>
+    </span>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header text-left">
+              <h4>材料</h4>
+          </div>
+          <ul class="list-group">
+            <% @recipe.ingredients.each do |ingredient| %>
+              <li class="list-group-item"><%= ingredient.name + ' ' + ingredient.quantity %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header text-left">
+            <h4>情報</h4>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">保存方法 : <%= @recipe.storage_method %></li>
+            <li class="list-group-item">調理時間 : <%= @recipe.cooking_time %>分</li>
+            <li class="list-group-item">費用　　 : <%= @recipe.price %>円</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header text-left">
+          <h4>作り方</h4>
+      </div>
+      <ul class="list-group">
+        <% @recipe.steps.each.with_index(1) do |step, idx| %>
+          <li class="list-group-item"><%= "#{idx}. #{step.description}" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="text-right">
+      <%= link_to 'このレシピを削除する', recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
+      <%= link_to 'このレシピを編集する', edit_recipe_path(@recipe), class:"btn btn-success"%>
+    </div>
+  </div>
 </div>
-<div class="card">
-  <div class="card-header bg-info text-white text-center">
-      <%= @recipe.title %>
-  </div>
-  <span>
-    <div class="card">
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h4>説明</h4>
-      </div>
-      <p class="card-text"><%= @recipe.description %></p>
-    </div>
-  </span>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-header text-left">
-            材料
-        </div>
-        <ul class="list-group">
-          <% @recipe.ingredients.each do |ingredient| %>
-            <li class="list-group-item"><%= ingredient.name + ' ' + ingredient.quantity %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-header text-center">
-            情報
-        </div>
-        <ul class="list-group">
-          <li class="list-group-item">保存方法 : <%= @recipe.storage_method %></li>
-          <li class="list-group-item">調理時間 : <%= @recipe.cooking_time %>分</li>
-          <li class="list-group-item">費用　　 : <%= @recipe.price %>円</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  
 
-</div>
-<%= link_to '削除する', recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
