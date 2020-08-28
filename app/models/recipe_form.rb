@@ -1,7 +1,7 @@
 class RecipeForm
     include ActiveModel::Validations
   
-    attr_accessor :title, :description, :image, :ingredients_text, :steps_text, :storage_method, :price, :cooking_time
+    attr_accessor :title, :description, :image, :ingredients_text, :steps_text, :storage_method, :price, :cooking_time,:storage_time
   
     validates :title, presence: true, length: { maximum: 255 }
     validates :description, presence: true, length: { maximum: 512 }
@@ -23,7 +23,7 @@ class RecipeForm
         @cooking_time = model.cooking_time
         @price = model.price
         @persisted = model.persisted?
-
+        @storage_time = model.storage_time
       else
         @persisted = false
       end
@@ -43,6 +43,7 @@ class RecipeForm
       @price = params[:price].to_i
       @cooking_time = params[:cooking_time].to_i
       @storage_method = params[:storage_method]
+      @storage_time = params[:storage_time]
     end
   
     def persisted?
@@ -58,7 +59,7 @@ class RecipeForm
         cooking_time: @cooking_time,
         storage_method: @storage_method,
         price: @price,
-
+        storage_time: @storage_time
       }
     end
   

@@ -5,6 +5,7 @@ create_table "recipes", id: :integer, force: :cascade do |t|
 
   t.integer  "price",                   null: false
   t.integer  "cooking_time",            null: false
+  t.integer  "storage_time",            null: true
 
   t.datetime "created_at",              null: false
   t.datetime "updated_at",              null: false

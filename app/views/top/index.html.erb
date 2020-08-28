@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3 class="display-5">Let's 作り置き!</h3>
+  <h3 class="display-5">作り置きっちん！</h3>
   <hr class = "my-4">
   <p class="lead">このサイトは、お金と時間がない大学生のために、作り置きのレシピだけをまとめたサイトです.<br/>
   料理初心者の方は、料理時間が短いものを、腕に覚えがある方は、ぜひ難しいレシピに挑戦してみてください。
@@ -20,6 +20,7 @@
                     <div class="card-body">
                     <p class="card-text">料金(一食分): <%= recipe.price %>円</p>
                     <p class="card-text">調理時間: <%= recipe.cooking_time %>分</p>
+                    <p class="card-text">保存期間: <%= recipe.storage_time %>日間</p>
                     <%= link_to "レシピを見る", recipe, class:"btn btn-primary" %>
                 </div>
             </div>
